@@ -2,7 +2,7 @@ import React from 'react';
 
 const Banner = () => {
   return (
-    <div className="w-full min-h-screen p-6 md:p-20 font-sans">
+    <div className="w-full min-h-screen p-6 md:p-20 font-sans mt-17">
       <div className="max-w-7xl">
         {/* - Mobile: text-[14vw] scales to width.
           - Desktop: md:text-[9rem] matches the huge size.

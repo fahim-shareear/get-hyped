@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GetHypedLogo from '../logo/GetHyped';
 import fire from "../../assets/firelogo.png";
 import "../css/navbar.css";
@@ -9,13 +9,37 @@ import { IoClose } from 'react-icons/io5';
 const Navbar = () => {
     const navLinks = ["Expertise", "Work", "About", "Contact"];
     const [menu, setMenu] = useState(false);
+    const [showNav, setShowNav] = useState(true);
+
+    useEffect(()=>{
+        let lastScrollY = window.scrollY;
+
+        const handleScroll = () =>{
+            if(window.scrollY > lastScrollY){
+                setShowNav(false);
+            }else{
+                setShowNav(true);
+            }
+
+            lastScrollY = window.scrollY
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    },[]);
 
     const handleMenu = () => {
         setMenu(!menu);
     };
 
     return (
-        <div className='w-full px-6 md:px-10 relative'>
+        <motion.div
+            initial={{y: 0}}
+            animate={{y: showNav ? 0 : -100}}
+            transition={{duration: 0.3}}
+            className='w-full px-6 md:px-10 fixed top-3 z-100'
+        >
             <div className="flex items-center justify-between mx-auto">
                 <GetHypedLogo />
 
@@ -93,7 +117,7 @@ const Navbar = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </motion.div>
     );
 };
 
