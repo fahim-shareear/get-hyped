@@ -22,7 +22,7 @@ const Footer = () => {
 
     return (
         <div className='w-full h-130 relative'>
-            <div className="flex items-center flex-col">
+            <div className="md:flex items-center flex-col hidden">
                 <h1 className="font-bold text-[8rem] tracking-tighter">Let's Get Hyped!</h1>
                 <div className="flex items-center gap-5 mx-auto">
 
@@ -50,7 +50,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="w-40 h-40 rounded-full bg-[#fcb8fa] right-65 bottom-25 overflow-visible absolute z-100 flex items-center justify-center">
+            <div className="w-40 h-40 rounded-full bg-[#fcb8fa] right-65 bottom-25 overflow-visible absolute z-100 md:flex items-center justify-center hidden">
 
                 {/* 3. The Rotating Layer */}
                 <motion.svg
@@ -75,25 +75,24 @@ const Footer = () => {
                 <h1 className="font-bold text-5xl italic -rotate-12 select-none">GH</h1>
             </div>
 
-            <div className="md:w-[90%] mx-auto h-110 mt-10 bg-[#eae4d8] footer rounded-2xl flex items-start relative p-[100px_50px] md:[clip-path:polygon(0_80%,100%_0,100%_100%,0_100%)] rounded-tl-[15px] rounded-tr-[25px]">
+            <div className=" md:w-[90%] mx-auto h-auto md:h-110 mt-10 bg-[#eae4d8] footer rounded-2xl flex flex-col md:flex-row md:items-start items-center justify-center relative p-6 md:p-[100px_50px] md:[clip-path:polygon(0_80%,100%_0,100%_100%,0_100%)] rounded-tl-[15px] rounded-tr-[25px] w-80%">
 
-                <div className="z-100 absolute right-75 bottom-10">
-                    <div className="menu_div">
-                        <ul className="flex items-center gap-6">
+                <div className="z-100 md:absolute md:right-75 md:bottom-10 w-full md:w-auto flex flex-col md:flex-col items-center md:items-start gap-6 md:gap-0">
+                    <div className="menu_div max-w-7xl mx-auto md:w-auto">
+                        <ul className="flex flex-row md:flex-row items-center md:items-center gap-3 md:gap-6">
                             {menuDiv.map((menu, index)=> (
-                                <li key={index} className="font-bold text-[1rem] bg-white rounded-xl p-3 cursor-pointer">
+                                <li key={index} className="font-bold text-sm md:text-[1rem] bg-white rounded-xl p-2 md:p-3 cursor-pointer">
                                     {menu}
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    <div className="flex items-center gap-4 mt-8">
-                        <h1 className="font-bold text-xl">Follow Us</h1>
-                        <ul className="flex items-center gap-4">
+                    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 mt-6 md:mt-8 w-full md:w-auto">
+                        <ul className="flex items-center justify-center md:justify-start gap-3 md:gap-4">
                             {
                                 socialLogo.map((logo) => (
-                                    <li key={logo.id} className="text-2xl cursor-pointer bg-white rounded-full p-3">
+                                    <li key={logo.id} className="text-lg md:text-2xl cursor-pointer bg-white rounded-full p-2 md:p-3">
                                         {logo.icon}
                                     </li>
                                 ))
@@ -101,28 +100,38 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex items-center justify-between mt-7">
-                        <h1 className="font-bold text-[#918d86]">&copy; 2025 Get Hyped</h1>
-                        <h1 className="font-bold text-[#918d86]">&copy; Design by Dylan</h1>
+                    <div className="md:flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 mt-6 md:mt-7 w-full md:w-auto text-center md:text-left hidden">
+                        <h1 className="font-bold text-xs md:text-sm text-[#918d86]">&copy; 2025 Get Hyped</h1>
+                        <h1 className="hidden md:inline font-bold text-xs md:text-sm text-[#918d86]">&copy; Design by Dylan</h1>
+                        <h1 className="md:hidden font-bold text-xs text-[#918d86]">&copy; Design by Dylan</h1>
                     </div>
                 </div>
 
-                <div className="z-100 right-20 bottom-10 absolute">
-                    <div className="flex flex-col items-start">
-                        <h1 className="font-bold text-xl mb-2">Contact</h1>
-                        <p className='font-bold text-lg'>info@gethyped.nl</p>
-                        <p className='font-bold text-lg'>+31 6 1533 7496</p>
+                <div className="z-100 md:absolute md:right-20 md:bottom-10 w-full md:w-auto flex flex-col items-center md:items-start gap-6 md:gap-0 text-center md:text-left mt-5">
+                    <div className="flex flex-col items-center md:items-start">
+                        <h1 className="font-bold text-base md:text-xl mb-2 hidden md:flex ">Contact</h1>
+                        <p className='font-bold text-sm md:text-lg'>info@gethyped.nl</p>
+                        <p className='font-bold text-sm md:text-lg'>+31 6 1533 7496</p>
                     </div>
 
-                    <div className="flex flex-col items-start gap-2 mt-3">
-                        <h1 className="font-bold text-xl">Address</h1>
-                        <p className='font-bold text-lg'>Beltrumsestraat 6, <br /> 7141 AL Groenlo</p>
+                    <div className="flex flex-col items-center md:items-start gap-2 md:mt-6 mt-3">
+                        <h1 className="font-bold text-base md:text-xl hidden md:flex">Address</h1>
+                        <p className='font-bold text-sm md:text-lg'>Beltrumsestraat 6, <br /> 7141 AL Groenlo</p>
+                    </div>
+
+                    <div className="md:flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 mt-6 md:mt-7 w-full md:w-auto text-center md:text-left">
+                        <h1 className="font-bold text-xs md:text-sm text-[#918d86]">&copy; 2025 Get Hyped</h1>
+                        <h1 className="hidden md:inline font-bold text-xs md:text-sm text-[#918d86]">&copy; Design by Dylan</h1>
+                        <h1 className="md:hidden font-bold text-xs text-[#918d86] mt-3">&copy; Design by Dylan</h1>
+                        <h1 className="font-bold text-xs md:text-sm text-[#918d86] md:mt-5 mt-3">Privacyvoorwaarden</h1>
                     </div>
 
                     <div>
-                        <h1 className="font-bold text-[#918d86] mt-5">Privacyvoorwaarden</h1>
+                        <h1 className="font-bold text-xs md:text-sm text-[#918d86] md:mt-5 hidden md:flex">Privacyvoorwaarden</h1>
                     </div>
                 </div>
+
+                
             </div>
         </div>
     );
