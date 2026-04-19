@@ -3,9 +3,7 @@ import { motion } from 'framer-motion';
 import firstVideo from '../../assets/Loop Salontopper.mp4';
 import secondVideo from '../../assets/petrolhead-loop.mp4';
 import cover from '../../assets/cover.webp';
-// import { ArrowDown, ArrowRight } from 'lucide-react';
 import { FaArrowDown, FaArrowRight } from 'react-icons/fa';
-// import { ArrowRight, ArrowDown } from 'lucide-react';
 
 const Banner = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -16,6 +14,23 @@ const Banner = () => {
     { initialRotate: 8, xOffset: -20 },
     { initialRotate: 15, xOffset: -40 },
   ];
+
+  // Animation Variants for the infinite travel effect
+  const arrowRightVariants = {
+    initial: { x: 0 },
+    hover: { 
+      x: [0, 40, -40, 0],
+      transition: { duration: 0.5, times: [0, 0.4, 0.41, 1], ease: "easeInOut" }
+    }
+  };
+
+  const arrowDownVariants = {
+    initial: { y: 0 },
+    hover: { 
+      y: [0, 40, -40, 0],
+      transition: { duration: 0.5, times: [0, 0.4, 0.41, 1], ease: "easeInOut" }
+    }
+  };
 
   return (
     <div className="w-full min-h-screen p-6 md:p-20 font-sans mt-17 relative overflow-x-hidden">
@@ -41,7 +56,7 @@ const Banner = () => {
         {/* Mobile/Tablet Group 1: Poker-style Stacked Cards */}
         <div className="md:hidden relative h-112.5 mt-10 flex justify-end px-10">
           <div className="relative w-64 h-80">
-            {/* Card 1 - Bottom of poker stack */}
+            {/* Card 1 */}
             <motion.div
               onMouseEnter={() => setHoveredIndex(0)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -63,7 +78,7 @@ const Banner = () => {
               </div>
             </motion.div>
 
-            {/* Card 2 - Top of poker stack */}
+            {/* Card 2 */}
             <motion.div
               onMouseEnter={() => setHoveredIndex(1)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -83,10 +98,9 @@ const Banner = () => {
         </div>
       </div>
 
-      {/* Desktop Layout: Standard Flex Row */}
+      {/* Desktop Layout */}
       <div className="hidden md:block md:max-w-[95%] mx-auto py-9">
         <div className="flex items-center gap-5 mx-4 py-5">
-          {/* Card 1 */}
           <motion.div
             onMouseEnter={() => setHoveredIndex(0)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -107,7 +121,6 @@ const Banner = () => {
             </div>
           </motion.div>
 
-          {/* Card 2 */}
           <motion.div
             onMouseEnter={() => setHoveredIndex(1)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -123,7 +136,6 @@ const Banner = () => {
             <video src={firstVideo} autoPlay loop muted playsInline className="w-full h-full object-cover"></video>
           </motion.div>
 
-          {/* Card 3 */}
           <motion.div
             onMouseEnter={() => setHoveredIndex(2)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -144,7 +156,6 @@ const Banner = () => {
             </div>
           </motion.div>
 
-          {/* Card 4 */}
           <motion.div
             onMouseEnter={() => setHoveredIndex(3)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -169,7 +180,6 @@ const Banner = () => {
 
         {/* Mobile/Tablet Group 2 */}
         <div className="md:hidden relative h-125">
-          {/* Card 3 */}
           <motion.div
             onMouseEnter={() => setHoveredIndex(2)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -190,7 +200,6 @@ const Banner = () => {
             </div>
           </motion.div>
 
-          {/* Card 4 */}
           <motion.div
             onMouseEnter={() => setHoveredIndex(3)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -208,18 +217,11 @@ const Banner = () => {
         </div>
 
 
-        <div className="w-full min-h-150 bg-[#F9F4EE] px-6 md:px-20 py-20 flex flex-col md:flex-row items-center justify-between gap-10">
-
-          {/* Left: Image Container */}
+        <div className="w-full min-h-150 bg-[#F9F4EE] px-6 md:px-20 py-20 flex flex-col md:flex-row items-center justify-between gap-10 relative">
           <div className="w-full md:w-87.5 aspect-4/5 rounded-3xl overflow-hidden shadow-sm">
-            <img
-              src={cover}
-              alt="Cover"
-              className="w-full h-full object-cover"
-            />
+            <img src={cover} alt="Cover" className="w-full h-full object-cover" />
           </div>
 
-          {/* Center: Text Content */}
           <div className="flex-1 max-w-2xl space-y-8">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A] leading-tight tracking-tight">
               We stoppen niet bij mooie plaatjes en vette beelden. We maken het meetbaar.
@@ -227,21 +229,34 @@ const Banner = () => {
               Nooit meer content zonder resultaat.
             </h1>
 
-            <button className="flex items-center gap-3 px-6 py-3 border border-black rounded-full font-bold text-lg hover:bg-black hover:text-white transition-all group">
-              Leer ons kennen
-              <div className="bg-black text-white rounded-full p-1 group-hover:bg-white group-hover:text-black transition-colors">
-                <FaArrowRight size={20} />
+            {/* Hover trigger on the button parent */}
+            <motion.button 
+              whileHover={{ rotate: -5, scale: 1.05 }}
+              key="bottom-button-anim"
+              className="flex items-center gap-3 px-6 py-3 border border-black rounded-xl font-bold text-lg transition-all group"
+            >
+              <span className="relative z-10">Leer ons kennen</span>
+              <div className="bg-black text-white rounded-xl p-3 transition-colors overflow-hidden">
+                <motion.div initial="initial"
+                whileHover="hover">
+                  <FaArrowRight size={20} />
+                </motion.div>
               </div>
-            </button>
+            </motion.button>
           </div>
 
-          {/* Right: Down Arrow (Sticky/Positioned Bottom Right) */}
-          <div className="hidden md:flex items-end h-full">
-            <button className="p-4 border border-gray-400 rounded-2xl text-orange-500 hover:border-black transition-colors">
-              <FaArrowDown size={24} />
-            </button>
+          <div className="hidden md:flex items-end h-full relative">
+            {/* Hover trigger on the down arrow parent div/button */}
+            <motion.button 
+              initial="initial"
+              whileHover="hover"
+              className="p-4 border border-gray-400 rounded-2xl text-orange-500 hover:border-black transition-colors absolute top-20 right-10 overflow-hidden"
+            >
+              <motion.div variants={arrowDownVariants}>
+                <FaArrowDown size={24} />
+              </motion.div>
+            </motion.button>
           </div>
-
         </div>
       </div>
     </div>
