@@ -47,16 +47,21 @@ const Footer = () => {
                             </div>
                         </button>
                     </motion.div>
+
+                    
+
                 </div>
             </div>
 
             <div className="w-40 h-40 rounded-full bg-[#fcb8fa] right-65 bottom-25 overflow-visible absolute z-100 md:flex items-center justify-center hidden">
 
+                
+
                 {/* 3. The Rotating Layer */}
                 <motion.svg
                     viewBox="0 0 100 100"
                     className="absolute w-full h-full"
-                    style={{ rotate }} // Framer Motion handles the 'deg' units automatically
+                    style={{ rotate }}
                 >
                     <defs>
                         <path
@@ -76,6 +81,15 @@ const Footer = () => {
             </div>
 
             <div className=" md:w-[90%] mx-auto h-auto md:h-110 mt-10 bg-[#eae4d8] footer rounded-2xl flex flex-col md:flex-row md:items-start items-center justify-center relative p-6 md:p-[100px_50px] md:[clip-path:polygon(0_80%,100%_0,100%_100%,0_100%)] rounded-tl-[15px] rounded-tr-[25px] w-80%">
+
+                <motion.div whileHover={{ rotate: -5, scale: 1.05 }} className='bg-orange-500 p-3 rounded-xl cursor-pointer md:hidden z-100 mb-6'>
+                        <button className="font-bold flex items-center gap-3 text-white">
+                            Get Hyped! Neem contact op
+                            <div className="bg-white w-8 h-8 rounded-lg flex items-center justify-center p-1">
+                                <img src={fire} className="w-full h-full object-contain" alt="fire" />
+                            </div>
+                        </button>
+                    </motion.div>
 
                 <div className="z-100 md:absolute md:right-75 md:bottom-10 w-full md:w-auto flex flex-col md:flex-col items-center md:items-start gap-6 md:gap-0">
                     <div className="menu_div max-w-7xl mx-auto md:w-auto">
