@@ -119,11 +119,10 @@ const Footer = () => {
                         <p className='font-bold text-sm md:text-lg'>Beltrumsestraat 6, <br /> 7141 AL Groenlo</p>
                     </div>
 
-                    <div className="md:flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 mt-6 md:mt-7 w-full md:w-auto text-center md:text-left">
-                        <h1 className="font-bold text-xs md:text-sm text-[#918d86]">&copy; 2025 Get Hyped</h1>
-                        <h1 className="hidden md:inline font-bold text-xs md:text-sm text-[#918d86]">&copy; Design by Dylan</h1>
+                    <div className="md:flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 mt-6 md:mt-2 w-full md:w-auto text-center md:text-left">
+                        <h1 className="font-bold text-xs md:text-sm text-[#918d86] md:hidden">&copy; 2025 Get Hyped</h1>
                         <h1 className="md:hidden font-bold text-xs text-[#918d86] mt-3">&copy; Design by Dylan</h1>
-                        <h1 className="font-bold text-xs md:text-sm text-[#918d86] md:mt-5 mt-3">Privacyvoorwaarden</h1>
+                        <h1 className="font-bold text-xs md:text-sm text-[#918d86] md:mt-5 mt-3 md:hidden">Privacyvoorwaarden</h1>
                     </div>
 
                     <div>
