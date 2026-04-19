@@ -140,14 +140,14 @@ const PortfolioSection = () => {
             index={1}
             isHovered={hoveredIndex === 1}
             setHoveredIndex={setHoveredIndex}
-            className="md:absolute md:right-50 md:bottom-60 md:transform md:-translate-x-1/2"
+            className="md:absolute md:right-50 md:bottom-70 md:transform md:-translate-x-1/2"
           />
           <MediaCard
             card={card3}
             index={2}
             isHovered={hoveredIndex === 2}
             setHoveredIndex={setHoveredIndex}
-            className="md:absolute md:right-0 md:bottom-120"
+            className="md:absolute md:right-0 md:bottom-110"
           />
         </div>
       </div>
