@@ -6,7 +6,6 @@ import secondVideo from '../../assets/petrolhead-loop.mp4';
 const Banner = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  // Configuration for the messy/rotated look
   const cardSettings = [
     { initialRotate: -12, xOffset: 20 },
     { initialRotate: -5, xOffset: 0 },
@@ -15,27 +14,16 @@ const Banner = () => {
   ];
 
   return (
-    <div className="w-full min-h-screen p-6 md:p-20 font-sans mt-17">
-      <div className="max-w-7xl">
-        {/* - Mobile: text-[14vw] scales to width.
-          - Desktop: md:text-[9rem] matches the huge size.
-          - Leading: Tight line height to match the brand style.
-        */}
+    <div className="w-full min-h-screen p-6 md:p-20 font-sans mt-17 relative overflow-x-hidden">
+      <div className="max-w-7xl relative z-10">
         <h1 className="text-[14vw] md:text-[9rem] font-bold leading-[0.9] md:leading-[0.85] tracking-tighter text-[#1A1A1A] mb-10">
-          {/* Line 1 (Mobile & Desktop) */}
           Get Hyped.
-
-          {/* On Mobile: Break here. On Desktop: Keep "Get" on this line. */}
           <br className="md:hidden" />
           <span className="hidden md:inline"> </span>
           Get
-
-          {/* On Desktop: Break here. On Mobile: Keep "Noticed" on this line. */}
           <br className="hidden md:block" />
           <span className="md:hidden"> </span>
           Noticed.
-
-          {/* Always break before "Get Results" to match both screenshots */}
           <br className="md:hidden" />
           <span className='md:hidden'></span>
           Get Results.
@@ -45,11 +33,55 @@ const Banner = () => {
           Klaar met gokken op content <br />
           die niets oplevert?
         </p>
+
+        {/* Mobile/Tablet Group 1: Poker-style Stacked Cards */}
+        <div className="md:hidden relative h-112.5 mt-10 flex justify-end px-10">
+          <div className="relative w-64 h-80">
+            {/* Card 1 - Bottom of poker stack */}
+            <motion.div 
+              onMouseEnter={() => setHoveredIndex(0)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              animate={{
+                rotate: hoveredIndex === 0 ? 0 : -15,
+                scale: hoveredIndex === 0 ? 1.05 : hoveredIndex !== null ? 0.95 : 1,
+                zIndex: hoveredIndex === 0 ? 30 : 10,
+                x: hoveredIndex === 0 ? -40 : 0,
+                y: hoveredIndex === 0 ? -20 : 0
+              }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="absolute inset-0 w-64 h-80 rounded-4xl bg-[#0d8dff] shadow-xl origin-bottom"
+            >
+              <h1 className="font-bold text-4xl p-4 absolute">10M+</h1>
+              <div className="absolute bottom-6 left-4">
+                <h1 className="font-bold text-xl mr-5 mb-1">Organische views</h1>
+                <hr className="w-full" />
+                <h3 className="font-bold text-sm">Groei door slimme content</h3>
+              </div>
+            </motion.div>
+
+            {/* Card 2 - Top of poker stack */}
+            <motion.div 
+              onMouseEnter={() => setHoveredIndex(1)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              animate={{
+                rotate: hoveredIndex === 1 ? 0 : 5,
+                scale: hoveredIndex === 1 ? 1.05 : hoveredIndex !== null ? 0.95 : 1,
+                zIndex: hoveredIndex === 1 ? 30 : 11,
+                x: hoveredIndex === 1 ? 40 : 0,
+                y: hoveredIndex === 1 ? -20 : 0
+              }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="absolute inset-0 w-64 h-80 rounded-4xl overflow-hidden shadow-2xl origin-bottom"
+            >
+              <video src={firstVideo} autoPlay loop muted playsInline className="w-full h-full object-cover"></video>
+            </motion.div>
+          </div>
+        </div>
       </div>
 
-      <div className="md:max-w-[95%] mx-auto py-9">
+      {/* Desktop Layout: Standard Flex Row */}
+      <div className="hidden md:block md:max-w-[95%] mx-auto py-9">
         <div className="flex items-center gap-5 mx-4 py-5">
-
           {/* Card 1 */}
           <motion.div 
             onMouseEnter={() => setHoveredIndex(0)}
@@ -84,12 +116,7 @@ const Banner = () => {
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
             className="w-95 h-125 rounded-4xl overflow-hidden relative shrink-0"
           >
-            <video src={firstVideo}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover top-0 left-0"></video>
+            <video src={firstVideo} autoPlay loop muted playsInline className="w-full h-full object-cover"></video>
           </motion.div>
 
           {/* Card 3 */}
@@ -126,16 +153,55 @@ const Banner = () => {
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
             className="w-98 h-125 rounded-4xl overflow-hidden relative shrink-0"
           >
-            <video src={secondVideo}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className='w-full h-full object-cover top-0 left-0'
-            ></video>
+            <video src={secondVideo} autoPlay loop muted playsInline className='w-full h-full object-cover'></video>
           </motion.div>
-
         </div>
+      </div>
+
+      <div className="w-full min-h-screen relative">
+            <h1 className="font-bold text-4xl md:text-7xl py-10 px-7 md:w-[70%] relative z-10">
+                Wij maken content die opvalt. Die blijft hangen. Die jouw doelgroep raakt en jouw merk in beweging brengt. Snel, krachtig en energiek.
+            </h1>
+
+            {/* Mobile/Tablet Group 2 */}
+            <div className="md:hidden relative h-125">
+                {/* Card 3 */}
+                <motion.div 
+                    onMouseEnter={() => setHoveredIndex(2)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    animate={{
+                        rotate: hoveredIndex === 2 ? 0 : cardSettings[2].initialRotate,
+                        scale: hoveredIndex === 2 ? 1.05 : hoveredIndex !== null ? 0.95 : 1,
+                        zIndex: hoveredIndex === 2 ? 30 : 10,
+                        x: hoveredIndex === null ? -20 : (hoveredIndex > 2 ? -20 : 0)
+                    }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                    className="absolute left-6 top-10 w-64 h-80 rounded-4xl bg-[#33c791] shrink-0"
+                >
+                    <h1 className="font-bold text-4xl p-4 absolute">30M+</h1>
+                    <div className="absolute bottom-6 left-4">
+                        <h1 className="font-bold text-xl mr-5 mb-1">Merken geholpen</h1>
+                        <hr className="w-full" />
+                        <h3 className="font-bold text-sm">Van start-up tot multinational</h3>
+                    </div>
+                </motion.div>
+
+                {/* Card 4 */}
+                <motion.div 
+                    onMouseEnter={() => setHoveredIndex(3)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    animate={{
+                        rotate: hoveredIndex === 3 ? 0 : cardSettings[3].initialRotate,
+                        scale: hoveredIndex === 3 ? 1.05 : hoveredIndex !== null ? 0.95 : 1,
+                        zIndex: hoveredIndex === 3 ? 30 : 11,
+                        x: hoveredIndex === null ? 20 : (hoveredIndex < 3 ? 20 : 0)
+                    }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                    className="absolute left-16 top-24 w-64 h-80 rounded-4xl overflow-hidden shrink-0"
+                >
+                    <video src={secondVideo} autoPlay loop muted playsInline className='w-full h-full object-cover'></video>
+                </motion.div>
+            </div>
       </div>
     </div>
   );
