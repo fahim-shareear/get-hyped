@@ -6,6 +6,17 @@ import Loco03 from '../../assets/loco-bites-loop_03.mp4';
 
 const MediaCard = ({ card, index, isHovered, setHoveredIndex, className = '' }) => {
   const videoRef = useRef(null);
+  const [isResponsive, setIsResponsive] = useState(false);
+
+  useEffect(() => {
+    const checkResponsive = () => {
+      setIsResponsive(window.innerWidth < 768);
+    };
+
+    checkResponsive();
+    window.addEventListener('resize', checkResponsive);
+    return () => window.removeEventListener('resize', checkResponsive);
+  }, []);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -40,6 +51,7 @@ const MediaCard = ({ card, index, isHovered, setHoveredIndex, className = '' }) 
           muted
           loop
           playsInline
+          autoPlay={isResponsive}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
