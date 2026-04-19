@@ -23,11 +23,14 @@ const MediaCard = ({ card, index, isHovered, setHoveredIndex, className = '' }) 
       if (isHovered) {
         videoRef.current.play().catch((error) => console.log("Video play failed:", error));
       } else {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
+        // Only pause on non-responsive if not hovered
+        if (!isResponsive) {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0;
+        }
       }
     }
-  }, [isHovered]);
+  }, [isHovered, isResponsive]);
 
   return (
     // Individual portfolio media card with hover animation and video playback
