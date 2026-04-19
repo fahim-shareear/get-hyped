@@ -73,14 +73,18 @@ const Card = ({ i, title, description, videoSrc, color, progress, range, targetS
         {/* VIDEO SECTION: Shaped like a portrait screen/frame */}
         <div className="flex-1 flex items-center justify-center p-6 md:p-12">
           <div className="relative w-full h-full max-h-137.5 aspect-3/4 md:aspect-auto rounded-[35px] overflow-hidden shadow-2xl ring-8 ring-black/5">
-            <video
-              src={videoSrc}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
+            {videoSrc ? (
+              <video
+                src={videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-black/10" />
+            )}
             {/* Subtle overlay gradient */}
             <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
           </div>
@@ -101,7 +105,7 @@ const Expertise = () => {
     {
       title: "Social strategy",
       color: "#FFFFFF",
-      videoSrc: "https://v.ftcdn.net/05/56/67/39/700_F_556673967_Vn7S4pYwWvA8qHjMvR7UfA9YvL5yqL3w_ST.mp4",
+      videoSrc: "",
       description: {
         sub: "Slimme strategie. Sterke start.",
         main: "We duiken diep in jouw merk, doelgroep en doelen. En vertalen data naar een duidelijk plan met formats die écht impact maken."
@@ -110,7 +114,7 @@ const Expertise = () => {
     {
       title: "Content Creation",
       color: "#F9F4EE",
-      videoSrc: "https://v.ftcdn.net/04/18/34/06/700_F_418340628_N8Ua6X8XW9H7qKqN7W8UfA9YvL5yqL3w_ST.mp4",
+      videoSrc: "",
       description: {
         sub: "Beelden die blijven hangen.",
         main: "Onze creatives maken vette beelden die niet alleen mooi zijn, maar ook converteren. Van short-form video tot high-end campagnes."
@@ -119,7 +123,7 @@ const Expertise = () => {
     {
       title: "Social Ads",
       color: "#FFFFFF",
-      videoSrc: "https://v.ftcdn.net/03/24/45/63/700_F_324456381_N8Ua6X8XW9H7qKqN7W8UfA9YvL5yqL3w_ST.mp4",
+      videoSrc: "",
       description: {
         sub: "Resultaat boven alles.",
         main: "Data liegt niet. We monitoren, testen en optimaliseren continu om het maximale uit jouw budget en content te halen."
@@ -128,7 +132,7 @@ const Expertise = () => {
     {
       title: "Full Management",
       color: "#F9F4EE",
-      videoSrc: "https://v.ftcdn.net/05/12/34/56/700_F_512345678_N8Ua6X8XW9H7qKqN7W8UfA9YvL5yqL3w_ST.mp4", 
+      videoSrc: "",
       description: {
         sub: "Zorgeloos groeien.",
         main: "Wij nemen de volledige regie over jouw social kanalen. Van community management tot de inzet van creators."
