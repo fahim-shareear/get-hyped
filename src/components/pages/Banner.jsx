@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import firstVideo from '../../assets/Loop Salontopper.mp4';
-import secondVideo from '../../assets/petrolhead-loop.mp4';
+import firstVideo from '../../../public/Loop Salontopper.mp4';
+import secondVideo from '../../../public/petrolhead-loop.mp4';
 import cover from '../../assets/cover.webp';
 import { FaArrowDown, FaArrowRight } from 'react-icons/fa';
 
