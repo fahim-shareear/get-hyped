@@ -55,13 +55,15 @@ const Brands = () => {
         >
           {logos.concat(logos.slice(0, 4)).map((logo, index) => (
             <SwiperSlide key={`${logo.id}-${index}`}>
-              <div className="rounded-2xl border border-[#ded0c5]p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] flex items-center justify-center md:min-h-90 h-40">
+              <div className="rounded-2xl border border-[#ded0c5] p-8 flex items-center justify-center md:min-h-90 h-40">
                 <img src={logo.src} alt={`Brand logo ${logo.id}`} className="max-h-100 object-contain" />
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
+
+      <hr className="w-[95%] mx-auto border-[#ded0c5] mt-10" />
     </section>
   );
 };
