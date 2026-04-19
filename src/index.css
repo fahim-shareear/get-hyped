@@ -7,5 +7,6 @@
 }
 
 body{
+    position: relative;
     background-color: #faf4ec;
 }

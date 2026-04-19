@@ -30,7 +30,7 @@ const MediaCard = ({ card, index, isHovered, setHoveredIndex, className = '' }) 
         zIndex: isHovered ? 50 : 10,
       }}
       transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-      className={`w-full max-w-[330px] h-[470px] rounded-[36px] overflow-hidden border-[6px] shadow-[0_30px_80px_rgba(0,0,0,0.15)] cursor-pointer bg-black ${card.offsetClass} ${className}`}
+      className={`w-full max-w-82.5 h-117.5 rounded-[36px] overflow-hidden border-[6px] shadow-[0_30px_80px_rgba(0,0,0,0.15)] cursor-pointer bg-black ${card.offsetClass} ${className}`}
       style={{ borderColor: card.accentColor }}
     >
       <div className="absolute inset-0 overflow-hidden">
@@ -42,7 +42,7 @@ const MediaCard = ({ card, index, isHovered, setHoveredIndex, className = '' }) 
           playsInline
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
       </div>
 
       <motion.div
