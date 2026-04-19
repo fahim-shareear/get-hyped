@@ -4,9 +4,19 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { IoMailSharp } from 'react-icons/io5';
 import "../../components/css/footer.css"
 import GetHyped from '../logo/GetHyped';
+import { li } from 'framer-motion/client';
+import { RiLinkedinFill } from 'react-icons/ri';
+import { FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
     const { scrollYProgress } = useScroll();
+    const menuDiv = ['Expertise', 'Work', 'About', 'Contact'];
+    const socialLogo = [
+        {id: 1, icon: <RiLinkedinFill /> },
+        {id: 2, icon: <FaTiktok /> },
+        {id: 3, icon: <FaInstagram /> },
+        {id: 4, icon: <FaYoutube /> }
+    ]
 
     const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
@@ -66,6 +76,53 @@ const Footer = () => {
             </div>
 
             <div className="md:w-[90%] mx-auto h-110 mt-10 bg-[#eae4d8] footer rounded-2xl flex items-start relative p-[100px_50px] md:[clip-path:polygon(0_80%,100%_0,100%_100%,0_100%)] rounded-tl-[15px] rounded-tr-[25px]">
+
+                <div className="z-100 absolute right-75 bottom-10">
+                    <div className="menu_div">
+                        <ul className="flex items-center gap-6">
+                            {menuDiv.map((menu, index)=> (
+                                <li key={index} className="font-bold text-[1rem] bg-white rounded-xl p-3 cursor-pointer">
+                                    {menu}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className="flex items-center gap-4 mt-8">
+                        <h1 className="font-bold text-xl">Follow Us</h1>
+                        <ul className="flex items-center gap-4">
+                            {
+                                socialLogo.map((logo) => (
+                                    <li key={logo.id} className="text-2xl cursor-pointer bg-white rounded-full p-3">
+                                        {logo.icon}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <div className="flex items-center justify-between mt-7">
+                        <h1 className="font-bold text-[#918d86]">&copy; 2025 Get Hyped</h1>
+                        <h1 className="font-bold text-[#918d86]">&copy; Design by Dylan</h1>
+                    </div>
+                </div>
+
+                <div className="z-100 right-20 bottom-10 absolute">
+                    <div className="flex flex-col items-start">
+                        <h1 className="font-bold text-xl mb-2">Contact</h1>
+                        <p className='font-bold text-lg'>info@gethyped.nl</p>
+                        <p className='font-bold text-lg'>+31 6 1533 7496</p>
+                    </div>
+
+                    <div className="flex flex-col items-start gap-2 mt-3">
+                        <h1 className="font-bold text-xl">Address</h1>
+                        <p className='font-bold text-lg'>Beltrumsestraat 6, <br /> 7141 AL Groenlo</p>
+                    </div>
+
+                    <div>
+                        <h1 className="font-bold text-[#918d86] mt-5">Privacyvoorwaarden</h1>
+                    </div>
+                </div>
             </div>
         </div>
     );
