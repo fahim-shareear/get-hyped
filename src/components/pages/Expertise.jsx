@@ -55,7 +55,7 @@ const Card = ({ i, title, description, videoSrc, color, progress, range, targetS
             
             <motion.button 
               whileHover={{ rotate: -5, scale: 1.05 }}
-              className="flex items-center gap-4 pl-8 pr-2 py-2 border border-black rounded-full font-bold text-lg bg-transparent text-black hover:bg-black hover:text-white transition-all group"
+              className="flex items-center gap-4 pl-8 pr-2 py-2 border border-black rounded-full font-bold text-lg  text-black hover:bg-black hover:text-white transition-all group"
             >
               Meer over {title.toLowerCase()}
               <div className="bg-black text-white rounded-full w-12 h-12 flex items-center justify-center group-hover:bg-white group-hover:text-black overflow-hidden transition-colors">
